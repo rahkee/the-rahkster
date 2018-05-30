@@ -1,6 +1,6 @@
 const roFrameCorners = document.querySelectorAll('.ro-frame-corners');
 
-var brightnessInterval = .01;
+var brightnessInterval = 1;
 var dimPoint = Math.random() / 3;
 var brightPoint = Math.random() / 2;
 
