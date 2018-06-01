@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-color: white;
+    background: url('../images/1018.jpg');
     font-family: var(--system-font);
     font-size: 1.4rem;
     line-height: 1.5;
@@ -18,4 +18,8 @@ body {
 h1, h2 h3, h4, h5, h6 {
     font-family: var(--marker-font);
     line-height: 1;
+}
+
+button {
+    line-height: 1.4;
 }
