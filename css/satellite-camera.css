@@ -1,0 +1,9 @@
+#planetary-surface {
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+}
+
+#planetary-surface img {
+    width: 100vw;
+}

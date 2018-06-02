@@ -9,10 +9,10 @@ html {
 }
 
 body {
-    background: url('../images/1018.jpg');
     font-family: var(--system-font);
     font-size: 1.4rem;
     line-height: 1.5;
+    overflow: hidden;
 }
 
 h1, h2 h3, h4, h5, h6 {
