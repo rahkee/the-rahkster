@@ -1,9 +1,18 @@
-#planetary-surface {
+#planet-surface {
+    background-color: red;
     height: 100vh;
-    overflow: hidden;
+    position: relative;
     width: 100vw;
 }
 
-#planetary-surface img {
-    width: 100vw;
+#planet-surface-image {
+    /* BEGIN ANIMATING */
+}
+
+#planet-surface-image.fill-width {
+    width: 100%;
+}
+
+#planet-surface-image.fill-height {
+    height: 100%;
 }
