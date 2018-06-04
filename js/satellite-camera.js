@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'images/6590-e.jpg',
         ]
     }
+
     const planetSurface = document.getElementById('planet-surface');
     const planetSurfaceDisplay = document.getElementById('planet-surface-image');
     const selectStarSystem = Math.floor(Math.random() * Math.floor(10));
@@ -73,8 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let imageHeight = planetSurfaceDisplay.height;
         let imageWidth = planetSurfaceDisplay.width;
 
-        // console.log('The monitor container is', monitorWidth, monitorHeight, '. The image is', imageWidth, imageHeight);
-
         if (imageWidth < monitorWidth) {
             planetSurfaceDisplay.className = 'fill-width';
         }
@@ -85,4 +84,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     cameraOrientation();
+    adjustCameraResolution();
 })
