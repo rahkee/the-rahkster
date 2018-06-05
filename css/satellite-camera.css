@@ -1,17 +1,26 @@
 #planet-surface {
     height: 100vh;
-    position: relative;
     width: 100vw;
 }
 
 #planet-surface-image {
-    /* BEGIN ANIMATING */
+    display: block;
+}
+
+.portrait img {
+    width: 100%;
+}
+
+.landscape img {
+    height: 100%;
 }
 
 #planet-surface-image.fill-width {
+    height: auto;
     width: 100%;
 }
 
 #planet-surface-image.fill-height {
     height: 100%;
+    width: auto;
 }

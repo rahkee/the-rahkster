@@ -30,44 +30,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const planetSurface = document.getElementById('planet-surface');
     const planetSurfaceDisplay = document.getElementById('planet-surface-image');
     const selectStarSystem = Math.floor(Math.random() * Math.floor(10));
+
+    let monitor = planetSurfaceDisplay.parentNode;
+
     var unknownWorlds = null;
+    var resizeTimer = null;
 
     window.addEventListener('resize', function(e) {
-        cameraOrientation();
+
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(function functionName() {
+            cameraOrientation();
+
+            adjustCameraResolution();
+        }, 0);
+
+
     });
 
-    var chosenWorld = function() {
-        return unknownWorlds[selectStarSystem];
-    }
+    planetSurfaceDisplay.addEventListener('load', function() {
+        adjustCameraResolution();
+    });
 
     function cameraOrientation() {
 
-        if (window.innerHeight > window.innerWidth) {
+        planetSurfaceDisplay.src = '';
 
-            planetSurface.className = 'portrait';
+        if (window.innerHeight >= window.innerWidth) {
             unknownWorlds = unknownWorldsOrientation["portrait"];
+            planetSurface.className = 'portrait';
 
         } else {
-
-            planetSurface.className = 'landscape';
             unknownWorlds = unknownWorldsOrientation["landscape"];
+            planetSurface.className = 'landscape';
         }
 
-        missionDisplay();
-    }
-
-    function missionDisplay() {
-
-        planetSurfaceDisplay.src = chosenWorld();
-
-        planetSurfaceDisplay.addEventListener('load', function() {
-            adjustCameraResolution();
-        })
-    }
+        planetSurfaceDisplay.src = unknownWorlds[selectStarSystem];
+    };
 
     function adjustCameraResolution() {
-
-        let monitor = planetSurfaceDisplay.parentNode;
         let monitorHeight = monitor.offsetHeight;
         let monitorWidth = monitor.offsetWidth;
 
@@ -84,5 +86,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     cameraOrientation();
-    adjustCameraResolution();
 })
