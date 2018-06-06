@@ -31,10 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const planetSurfaceDisplay = document.getElementById('planet-surface-image');
     const selectStarSystem = Math.floor(Math.random() * Math.floor(10));
 
+    let imageHeight = null;
+    let imageWidth = null;
     let monitor = planetSurfaceDisplay.parentNode;
-
-    var unknownWorlds = null;
-    var resizeTimer = null;
+    let monitorHeight = null;
+    let monitorWidth = null;
+    let offsetDifference = null;
+    let resizeTimer = null;
+    let unknownWorlds = null;
 
     window.addEventListener('resize', function(e) {
 
@@ -70,11 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function adjustCameraResolution() {
-        let monitorHeight = monitor.offsetHeight;
-        let monitorWidth = monitor.offsetWidth;
-
-        let imageHeight = planetSurfaceDisplay.height;
-        let imageWidth = planetSurfaceDisplay.width;
+        imageHeight = planetSurfaceDisplay.height;
+        imageWidth = planetSurfaceDisplay.width;
+        monitorHeight = monitor.offsetHeight;
+        monitorWidth = monitor.offsetWidth;
 
         if (imageWidth < monitorWidth) {
             planetSurfaceDisplay.className = 'fill-width';
@@ -82,6 +85,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (imageHeight < monitorHeight) {
             planetSurfaceDisplay.className = 'fill-height';
+        }
+
+        scanSurface();
+    }
+
+    function scanSurface() {
+
+        if (planetSurfaceDisplay.classList.value === 'fill-width') {
+            imageHeight = planetSurfaceDisplay.height;
+            offsetDifference = monitorHeight - imageHeight;
+
+            // console.log(planetSurfaceDisplay.style.setProperty('--offsetDifference'));
+        }
+
+        if (planetSurfaceDisplay.classList.value === 'fill-height') {
+            imageWidth = planetSurfaceDisplay.width;
+            offsetDifference = monitorWidth - imageWidth;
         }
     }
 

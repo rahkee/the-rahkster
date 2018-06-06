@@ -5,6 +5,7 @@
 
 #planet-surface-image {
     display: block;
+    /* transform: translateX(var(--offsetX)) translateY(var(offsetY)); */
 }
 
 .portrait img {
@@ -18,9 +19,11 @@
 #planet-surface-image.fill-width {
     height: auto;
     width: 100%;
+    /* transform: translateX(var(--offsetXDifference)); */
 }
 
 #planet-surface-image.fill-height {
     height: 100%;
     width: auto;
+    /* transform: translateY(var(--offsetYDifference)); */
 }
