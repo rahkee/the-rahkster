@@ -9,7 +9,7 @@
     --scanDuration: 0;
 
     animation-direction: alternate;
-    animation-duration: var(--scanDuration);
+    animation-duration: var(--scanDuration, calc((1000 * 60) * 15);
     animation-iteration-count: infinite;
     animation-name: scanningSurface;
     animation-timing-function: linear;
@@ -40,8 +40,8 @@ img.fill-height {
 
     from {
         transform: translate(
-            var(--scanSensorInputX),
-            var(--scanSensorInputY)
+            var(--scanSensorInputX, 0),
+            var(--scanSensorInputY, 0)
         );
     }
 
