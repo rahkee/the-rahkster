@@ -4,8 +4,17 @@
 }
 
 #planet-surface-image {
+    --scanSensorInputX: 0;
+    --scanSensorInputY: 0;
+    --scanDuration: 0;
+
+    animation-direction: alternate;
+    animation-duration: var(--scanDuration);
+    animation-iteration-count: infinite;
+    animation-name: scanningSurface;
+    animation-timing-function: linear;
     display: block;
-    /* transform: translateX(var(--offsetX)) translateY(var(offsetY)); */
+    opacity: .7;
 }
 
 .portrait img {
@@ -16,14 +25,27 @@
     height: 100%;
 }
 
-#planet-surface-image.fill-width {
+img.fill-width {
     height: auto;
     width: 100%;
-    /* transform: translateX(var(--offsetXDifference)); */
+
 }
 
-#planet-surface-image.fill-height {
+img.fill-height {
     height: 100%;
     width: auto;
-    /* transform: translateY(var(--offsetYDifference)); */
+}
+
+@keyframes scanningSurface {
+
+    from {
+        transform: translate(
+            var(--scanSensorInputX),
+            var(--scanSensorInputY)
+        );
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
 }

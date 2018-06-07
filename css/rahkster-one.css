@@ -2,6 +2,10 @@
     --marker-font: "IBM Plex Sans", sans-serif;
     --system-font: "IBM Plex Mono", monospace;
 }
+/* 
+* {
+    cursor: none;
+} */
 
 html {
     font-size: 62.5%;

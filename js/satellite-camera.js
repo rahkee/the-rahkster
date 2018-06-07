@@ -46,11 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resizeTimer = setTimeout(function functionName() {
             cameraOrientation();
-
             adjustCameraResolution();
-        }, 0);
-
-
+        }, 100);
     });
 
     planetSurfaceDisplay.addEventListener('load', function() {
@@ -92,16 +89,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function scanSurface() {
 
+        debugger
+
         if (planetSurfaceDisplay.classList.value === 'fill-width') {
+
             imageHeight = planetSurfaceDisplay.height;
             offsetDifference = monitorHeight - imageHeight;
 
-            // console.log(planetSurfaceDisplay.style.setProperty('--offsetDifference'));
+            console.log('HEIGHT DIFF:', offsetDifference);
+
+            planetSurfaceDisplay.style.setProperty('--scanSensorInputY', 500 + 'px')
+            planetSurfaceDisplay.style.setProperty('--scanDuration', 5 + 's')
         }
 
         if (planetSurfaceDisplay.classList.value === 'fill-height') {
+
             imageWidth = planetSurfaceDisplay.width;
             offsetDifference = monitorWidth - imageWidth;
+
+            console.log('WIDTH DIFF:', offsetDifference);
+
+            planetSurfaceDisplay.style.setProperty('--scanSensorInputX', 500 + 'px')
+            planetSurfaceDisplay.style.setProperty('--scanDuration', 5 + 's')
         }
     }
 
