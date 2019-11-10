@@ -3,7 +3,7 @@ class Index extends React.Component {
         invoiceNumber: 0,
         invoiceDate: 0,
 
-        clientName: '',
+        clientName: 'Ray Villaraza',
         clientPosition: 'Owner',
 
         clientCompany: 'Company Name',
@@ -32,9 +32,9 @@ class Index extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Button fnUpdateState={this.updateState} />
+                {/* <Button fnUpdateState={this.updateState} /> */}
 
-                <form>
+                <div className="form-container">
                     <input
                         type="text"
                         onChange={this.updateForm}
@@ -43,30 +43,30 @@ class Index extends React.Component {
                         id="firstLastName"
                     ></input>
                     <label htmlFor="firstLastName">First and Last Name</label>
-                </form>
+                </div>
 
-                <Invoice completeState={this.state} />
+                <div className="invoice-container">
+                    <Invoice completeState={this.state} />
+                </div>
             </React.Fragment>
         );
     }
 }
 
-const Button = props => {
-    return (
-        <button
-            onClick={() => {
-                props.fnUpdateState(2);
-            }}
-        >
-            Button
-        </button>
-    );
-};
+// const Button = props => {
+//     return (
+//         <button
+//             onClick={() => {
+//                 props.fnUpdateState(2);
+//             }}
+//         >
+//             Button
+//         </button>
+//     );
+// };
 
 const Invoice = props => {
-    console.log(props.completeState);
-
-    // TODO: how to destructure props
+    let { clientName, clientPosition } = props.completeState;
 
     return (
         <React.Fragment>
@@ -76,8 +76,14 @@ const Invoice = props => {
                     <p>190131 | January 31, 2019</p>
                 </div>
                 <div className="invoice-total-container">
-                    <h1 aria-labelledby="totalDue">$1923.18</h1>
-                    <p id="totalDue">Total Due</p>
+                    <div className="invoice-total-box">
+                        <p id="totalDue">Total Due</p>
+                        <h1 aria-labelledby="totalDue">
+                            $1923.18 <span>USD</span>
+                        </h1>
+                    </div>
+
+                    <p>includes TAX ($98.90 | 8.6%)</p>
                 </div>
             </header>
 
@@ -86,8 +92,20 @@ const Invoice = props => {
                     <p>Client Information</p>
                 </div>
                 <div className="client-information">
-                    <p>{props.completeState.clientName}</p>
-                    <p>{props.completeState.clientPosition}</p>
+                    <p>
+                        <strong>{clientName}</strong>
+                        <br />
+                        {clientPosition}
+                    </p>
+                    <p>
+                        <strong>Moira Sushi</strong>
+                        <br />
+                        215 East McKinley
+                        <br />
+                        Suite 102
+                        <br />
+                        Phoenix, Arizona 85004
+                    </p>
                 </div>
             </article>
 
@@ -95,7 +113,26 @@ const Invoice = props => {
                 <div className="section-title-bar">
                     <p>Invoice Details</p>
                 </div>
+
+                <div className=""></div>
             </article>
+
+            <article>
+                <div className="section-title-bar">
+                    <p>Payment Information</p>
+                </div>
+            </article>
+
+            <footer>
+                <p>
+                    This invoice contains information regarding services
+                    completed by Ray Villaraza for client(s) specified in the
+                    CLIENT INFORMATION section. Services completed are
+                    NON-REFUNDABLE. For questions or concerns, please contact me
+                    via telephone at <strong>(480) 544-2623</strong> or through
+                    electronic mail at <strong>ray.villaraza@gmail.com</strong>
+                </p>
+            </footer>
         </React.Fragment>
     );
 };
